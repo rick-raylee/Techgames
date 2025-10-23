@@ -1,0 +1,525 @@
+/* === ESTILOS DO MAPA INTERATIVO === */
+
+
+/* Controles do Mapa */
+
+.mapa-controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 30px 20px;
+    background: var(--bg-secondary, #f8f9fa);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.controle-item {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Botões de Controle */
+
+.btn-localizacao,
+.btn-rotas,
+.btn-compartilhar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.btn-localizacao svg,
+.btn-rotas svg,
+.btn-compartilhar svg {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-localizacao:hover,
+.btn-rotas:hover,
+.btn-compartilhar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-localizacao:disabled,
+.btn-rotas:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* Select de Tipo de Mapa */
+
+.select-tipo-mapa {
+    padding: 12px 20px;
+    border: 2px solid var(--border-color, #dee2e6);
+    border-radius: 25px;
+    background: var(--bg-primary, white);
+    color: var(--text-primary, #333);
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.select-tipo-mapa:hover {
+    border-color: var(--accent-color, #667eea);
+}
+
+.select-tipo-mapa:focus {
+    border-color: var(--accent-color, #667eea);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+
+/* Container do Mapa */
+
+.mapa-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+#mapa {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+
+/* Painel de Informações */
+
+.info-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    max-height: calc(100% - 40px);
+    background: var(--bg-primary, white);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    overflow-y: auto;
+    transform: translateX(calc(100% + 20px));
+    transition: transform 0.3s ease;
+}
+
+.info-panel.show {
+    transform: translateX(0);
+}
+
+.fechar-panel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: var(--bg-secondary, #f8f9fa);
+    border: none;
+    border-radius: 50%;
+    color: var(--text-primary, #333);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.fechar-panel:hover {
+    background: var(--danger-color, #dc3545);
+    color: white;
+}
+
+.info-content {
+    padding: 50px 20px 20px 20px;
+}
+
+.info-content h4 {
+    margin: 0 0 15px 0;
+    color: var(--text-primary, #333);
+    font-size: 1.3em;
+}
+
+.info-content p {
+    margin: 10px 0;
+    color: var(--text-secondary, #666);
+    line-height: 1.5;
+}
+
+.info-content .btn-rota {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: var(--success-color, #28a745);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.info-content .btn-rota:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+
+/* Cards de Localização */
+
+.localizacoes-disponiveis {
+    padding: 40px 0;
+}
+
+.localizacoes-disponiveis h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: var(--text-primary, #333);
+}
+
+.localizacoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.local-card {
+    background: var(--bg-primary, white);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.local-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-color, #667eea);
+}
+
+.local-icon {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.local-card h4 {
+    text-align: center;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: var(--text-primary, #333);
+}
+
+.local-endereco {
+    text-align: center;
+    color: var(--text-secondary, #666);
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.local-horario {
+    text-align: center;
+    color: var(--text-muted, #999);
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: var(--bg-secondary, #f8f9fa);
+    border-radius: 8px;
+}
+
+.local-acoes {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.btn-ir-mapa,
+.btn-ligar {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.btn-ir-mapa {
+    background: var(--accent-color, #667eea);
+    color: white;
+    border: none;
+}
+
+.btn-ir-mapa:hover {
+    background: #5a6fd8;
+}
+
+.btn-ligar {
+    background: var(--success-color, #28a745);
+    color: white;
+    border: 2px solid var(--success-color, #28a745);
+}
+
+.btn-ligar:hover {
+    background: #218838;
+}
+
+.btn-ligar svg {
+    width: 14px;
+    height: 14px;
+}
+
+.distancia {
+    display: block;
+    text-align: center;
+    color: var(--accent-color, #667eea);
+    font-weight: bold;
+    font-size: 0.85em;
+    padding: 8px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+
+/* Instruções de Acesso */
+
+.instrucoes-acesso {
+    padding: 40px 0;
+    background: var(--bg-secondary, #f8f9fa);
+    border-radius: 20px;
+    padding: 40px 20px;
+    margin-bottom: 50px;
+}
+
+.instrucoes-acesso h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: var(--text-primary, #333);
+}
+
+.instrucoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.instrucao-item {
+    background: var(--bg-primary, white);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.instrucao-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-color, #667eea);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.instrucao-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.instrucao-item h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: var(--text-primary, #333);
+}
+
+.instrucao-item p {
+    color: var(--text-secondary, #666);
+    line-height: 1.5;
+    font-size: 0.95em;
+}
+
+
+/* Customização dos marcadores do Leaflet */
+
+.custom-marker {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-marker::before {
+    content: '📍';
+    transform: rotate(45deg);
+    font-size: 20px;
+}
+
+
+/* Popup customizado */
+
+.leaflet-popup-content-wrapper {
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.leaflet-popup-content {
+    margin: 15px;
+    text-align: center;
+}
+
+.leaflet-popup-content h4 {
+    margin: 0 0 10px 0;
+    color: var(--text-primary, #333);
+}
+
+
+/* Loading State */
+
+.mapa-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1001;
+}
+
+.mapa-loading::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 10px auto;
+    border: 4px solid var(--border-color, #dee2e6);
+    border-top-color: var(--accent-color, #667eea);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    .mapa-controles {
+        padding: 20px 15px;
+        gap: 10px;
+    }
+    .btn-localizacao,
+    .btn-rotas,
+    .btn-compartilhar {
+        padding: 10px 15px;
+        font-size: 0.85em;
+    }
+    .btn-localizacao svg,
+    .btn-rotas svg,
+    .btn-compartilhar svg {
+        width: 16px;
+        height: 16px;
+    }
+    .mapa-container {
+        height: 400px;
+        border-radius: 15px;
+    }
+    .info-panel {
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
+        max-height: 50%;
+        bottom: 20px;
+        top: auto;
+        transform: translateY(calc(100% + 20px));
+    }
+    .info-panel.show {
+        transform: translateY(0);
+    }
+    .localizacoes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .local-acoes {
+        flex-direction: column;
+    }
+    .instrucoes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mapa-controles {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .controle-item {
+        width: 100%;
+    }
+    .btn-localizacao,
+    .btn-rotas,
+    .btn-compartilhar,
+    .select-tipo-mapa {
+        width: 100%;
+        justify-content: center;
+    }
+    .mapa-container {
+        height: 350px;
+    }
+}
+
+
+/* Dark Mode Support */
+
+[data-theme="dark"] .custom-marker {
+    border-color: var(--bg-primary);
+}
+
+[data-theme="dark"] .leaflet-popup-content-wrapper {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .leaflet-popup-content h4 {
+    color: var(--text-primary);
+}

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TechGame - Blog</title>
+    <link rel="stylesheet" href="blog.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+    <!-- ===================== Cabeçalho ===================== -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="assets/blog.techgame-removebg-preview.png" alt="Logo TechGame" />
+        </a>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="galeria.html">Galeria</a>
+            <a href="contato.html">Contato</a>
+            <a href="blog.html" class="active">Blog</a>
+            <button class="btnlogin-popup" id="showLoginBtn">Login</button>
+            <button class="btnlogin-popup" id="showRegisterBtn">Cadastro</button>
+        </nav>
+    </header>
+
+    <!-- ===================== Conteúdo Principal ===================== -->
+    <main>
+        <!-- Filtros e pesquisa -->
+        <section class="filtro-pesquisa">
+            <div class="filtros">
+                <button class="filtro-btn active" data-filtro="todos">Todos</button>
+                <button class="filtro-btn" data-filtro="tecnologia">Tecnologia</button>
+                <button class="filtro-btn" data-filtro="jogos">Jogos</button>
+                <button class="filtro-btn" data-filtro="gadgets">Gadgets</button>
+            </div>
+            <input type="text" class="search-bar" placeholder="Pesquisar artigos..." id="searchInput" />
+        </section>
+
+        <!-- Artigo em destaque -->
+        <section class="artigo-destaque">
+            <img src="assets/banner blog.jpg" alt="Artigo em Destaque" />
+            <h2>Dicas para Melhorar seu Setup Gamer</h2>
+            <p>Se você está buscando turbinar seu setup gamer, o blog da TechGame traz ótimas dicas para transformar seu espaço de jogo em uma verdadeira central de performance e conforto. Aqui estão algumas ideias para começar: 🖥️ Periféricos que fazem
+                a diferença Teclado mecânico: Resposta rápida e durabilidade para jogos competitivos. Mouse com alta DPI: Ideal para precisão em FPS e MOBAs. Headset com som surround: Imersão total e comunicação clara com sua equipe. Monitor com alta
+                taxa de atualização: 144Hz ou mais para fluidez nos movimentos. 🛋️ Organização e conforto Suporte para headset e cabos: Mantém tudo arrumado e acessível. Cadeira ergonômica: Essencial para longas sessões sem prejudicar a postura. Iluminação
+                RGB: Além de estilosa, pode ajudar na ambientação e foco. ⚙️ Configurações ideais Overclock seguro: Pode melhorar o desempenho sem comprometer a estabilidade. Software de gerenciamento: Personalize macros, iluminação e desempenho dos periféricos.
+                Sistema de refrigeração eficiente: Evita superaquecimento e mantém o desempenho estável. Você pode explorar mais detalhes e inspirações visuais clicando na seção Galeria</p>
+        </section>
+
+        <!-- Bloco de notícias com transição -->
+        <h1>Últimas Notícias</h1>
+        <div class="news-tabs">
+            <button class="tab-btn" data-tab="1">1</button>
+            <button class="tab-btn" data-tab="2">2</button>
+            <button class="tab-btn" data-tab="3">3</button>
+        </div>
+        <div class="news-panel" data-panel="1" aria-hidden="false">
+            <article class="news-card" data-news-id="1">
+                <img src="assets/news1.jpg" alt="Feira Tech na Praça" class="news-thumb">
+                <h3 class="news-title">Feira Tech na Praça</h3>
+                <p class="news-summary">Evento reúne criadores locais.</p>
+                <button class="read-more" data-news-id="1">Leia mais</button>
+            </article>
+            <article class="news-card" data-news-id="2">
+                <img src="assets/news2.jpg" alt="Campeonato Escolar de Robótica" class="news-thumb">
+                <h3 class="news-title">Campeonato Escolar de Robótica</h3>
+                <p class="news-summary">Alunos mostram habilidades em competições.</p>
+                <button class="read-more" data-news-id="2">Leia mais</button>
+            </article>
+            <article class="news-card" data-news-id="3">
+                <img src="assets/news3.jpg" alt="Iniciativa Verde nas Escolas" class="news-thumb">
+                <h3 class="news-title">Iniciativa Verde nas Escolas</h3>
+                <p class="news-summary">Projetos sustentáveis ganham destaque.</p>
+                <button class="read-more" data-news-id="3">Leia mais</button>
+            </article>
+        </div>
+        <div class="news-panel" data-panel="2" aria-hidden="true">
+            <article class="news-card" data-news-id="4">
+                <img src="assets/news4.jpg" alt="Festival de Games Futurista" class="news-thumb">
+                <h3 class="news-title">Festival de Games Futurista</h3>
+                <p class="news-summary">Inovações em realidade virtual expostas.</p>
+                <button class="read-more" data-news-id="4">Leia mais</button>
+            </article>
+            <article class="news-card" data-news-id="5">
+                <img src="assets/news5.jpg" alt="Workshop de IA Criativa" class="news-thumb">
+                <h3 class="news-title">Workshop de IA Criativa</h3>
+                <p class="news-summary">Artistas exploram inteligência artificial.</p>
+                <button class="read-more" data-news-id="5">Leia mais</button>
+            </article>
+            <article class="news-card" data-news-id="6">
+                <img src="assets/news6.jpg" alt="Expo de Gadgets 2025" class="news-thumb">
+                <h3 class="news-title">Expo de Gadgets 2025</h3>
+                <p class="news-summary">Novas tecnologias em exposição.</p>
+                <button class="read-more" data-news-id="6">Leia mais</button>
+            </article>
+        </div>
+        <div class="news-panel" data-panel="3" aria-hidden="true">
+            <article class="news-card" data-news-id="7">
+                <img src="assets/news7.jpg" alt="Maratona de Programação" class="news-thumb">
+                <h3 class="news-title">Maratona de Programação</h3>
+                <p class="news-summary">Desafios para jovens desenvolvedores.</p>
+                <button class="read-more" data-news-id="7">Leia mais</button>
+            </article>
+            <article class="news-card" data-news-id="8">
+                <img src="assets/news8.jpg" alt="Revolução dos Drones" class="news-thumb">
+                <h3 class="news-title">Revolução dos Drones</h3>
+                <p class="news-summary">Novas aplicações em entregas urbanas.</p>
+                <button class="read-more" data-news-id="8">Leia mais</button>
+            </article>
+            <article class="news-card" data-news-id="9">
+                <img src="assets/news9.jpg" alt="Futuro da Energia Limpa" class="news-thumb">
+                <h3 class="news-title">Futuro da Energia Limpa</h3>
+                <p class="news-summary">Inovações sustentáveis em destaque.</p>
+                <button class="read-more" data-news-id="9">Leia mais</button>
+            </article>
+        </div>
+
+        <!-- Modal de notícias -->
+        <div id="newsModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="newsModalTitle">
+            <div class="modal-inner">
+                <button class="modal-close">×</button>
+                <img id="newsModalImg" src="" alt="">
+                <h2 id="newsModalTitle"></h2>
+                <p id="newsModalMeta"></p>
+                <div id="newsModalBody"></div>
+                <div class="modal-actions">
+                    <button data-open-login>Login</button>
+                    <button data-open-signup>Cadastrar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vídeo -->
+        <section class="video-container">
+            <div class="video-responsive">
+                <iframe src="https://www.youtube.com/embed/evdM-YFtGfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="filter: var(--filter-img);"></iframe>
+            </div>
+        </section>
+
+        <style>
+            .video-responsive {
+                position: relative;
+                padding-bottom: 56.25%;
+                /* proporção 16:9 */
+                height: 0;
+                overflow: hidden;
+                max-width: 100%;
+                background: #000;
+                border-radius: 10px;
+            }
+            
+            .video-responsive iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+
+        <!-- Grid de artigos -->
+        <section class="artigos-grid" id="artigosGrid">
+            <article class="artigo-card" data-categoria="tecnologia" data-page="1">
+                <img src="assets/img5.jpg" alt="Artigo Tecnologia" />
+                <h3>Inovações em Hardware 2025</h3>
+                <p>Confira as últimas tendências em processadores e placas de vídeo.</p>
+            </article>
+            <article class="artigo-card" data-categoria="jogos" data-page="1">
+                <img src="assets/top jogos.png" alt="Artigo Jogos" />
+                <h3>Os Melhores Jogos de 2025</h3>
+                <p>Uma lista com os lançamentos mais esperados do ano.</p>
+            </article>
+            <article class="artigo-card" data-categoria="gadgets" data-page="1">
+                <img src="assets/img7.jpg" alt="Artigo Gadgets" />
+                <h3>Novos Gadgets para Streamers</h3>
+                <p>Equipamentos essenciais para quem quer começar a transmitir.</p>
+            </article>
+            <article class="artigo-card" data-categoria="jogos" data-page="2" style="display: none;">
+                <img src="assets/call of duty.jpg" alt="Notícia Jogos" />
+                <h3>Lançamento de Call of Duty 2025</h3>
+                <p>A nova temporada traz mapas inovadores e um modo battle royale expandido.</p>
+            </article>
+            <article class="artigo-card" data-categoria="jogos" data-page="2" style="display: none;">
+                <img src="assets/img8.jpg" alt="Notícia eSports" />
+                <h3>Campeonato Mundial de eSports</h3>
+                <p>O evento de setembro de 2025 bateu recordes de audiência global.</p>
+            </article>
+            <article class="artigo-card" data-categoria="gadgets" data-page="2" style="display: none;">
+                <img src="assets/img10.jpg" alt="Gadgets Fictício" />
+                <h3>Acessórios Inteligentes para Gamers</h3>
+                <p>Descubra gadgets com IA que melhoram a performance em jogos online.</p>
+            </article>
+            <article class="artigo-card" data-categoria="tecnologia" data-page="3" style="display: none;">
+                <img src="assets/img11.jpg" alt="Notícia Hardware" />
+                <h3>Nova GPU NVIDIA Revelada</h3>
+                <p>A RTX 5090 promete revolucionar os gráficos gamer em 2025.</p>
+            </article>
+            <article class="artigo-card" data-categoria="gadgets" data-page="3" style="display: none;">
+                <img src="assets/img7.jpg" alt="Tendências Gadgets" />
+                <h3>Tendências de Gadgets em 2025</h3>
+                <p>Controles modulares e headsets com IA estão em alta.</p>
+            </article>
+            <article class="artigo-card" data-categoria="tecnologia" data-page="3" style="display: none;">
+                <img src="assets/img13.jpg" alt="Tecnologia Fictícia" />
+                <h3>Avanços em Realidade Virtual</h3>
+                <p>Novas tecnologias de VR que integram sensores hápticos para imersão total.</p>
+            </article>
+        </section>
+
+        <!-- Paginação -->
+        <nav class="paginacao" aria-label="Paginação de artigos">
+            <button class="prev-btn" aria-label="Página anterior">Anterior</button>
+            <button class="page-btn active" data-page="1" aria-current="page">1</button>
+            <button class="page-btn" data-page="2">2</button>
+            <button class="page-btn" data-page="3">3</button>
+            <button class="next-btn" aria-label="Próxima página">Próximo</button>
+        </nav>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <h3>Inscreva-se na nossa Newsletter</h3>
+            <p>Receba as últimas novidades e dicas diretamente no seu e-mail!</p>
+            <form>
+                <input type="email" placeholder="Seu e-mail" required />
+                <button type="submit">Inscrever-se</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- ===================== Rodapé ===================== -->
+    <footer>
+        <img src="assets/logo.png" alt="Logo TechGame" class="logo-rodape" />
+        <p>&copy; 2025 TechGame. Todos os direitos reservados.</p>
+        <div class="social-links">
+            <a href="https://facebook.com/techgame" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/techgame" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/techgame" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <!-- ===================== Modal Login ===================== -->
+    <div id="loginModal" class="modal">
+        <div class="modal-inner login-inner">
+            <button class="modal-close">×</button>
+            <h2 class="modal-title">Login</h2>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="Digite seu email" required>
+            </div>
+            <div class="input-group">
+                <label>Senha</label>
+                <input type="password" placeholder="Digite sua senha" required>
+            </div>
+            <button class="google-btn">Conectar com Google</button>
+            <button class="submit-btn">Login</button>
+        </div>
+    </div>
+
+    <!-- ===================== Modal Cadastro ===================== -->
+    <div id="signupModal" class="modal">
+        <div class="modal-inner signup-inner">
+            <button class="modal-close">×</button>
+            <h2 class="modal-title">Cadastro</h2>
+            <div class="input-group">
+                <label>Nome</label>
+                <input type="text" placeholder="Digite seu nome" required>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="Digite seu email" required>
+            </div>
+            <div class="input-group">
+                <label>Senha</label>
+                <input type="password" placeholder="Digite sua senha" required>
+            </div>
+            <button class="google-btn">Conectar com Google</button>
+            <button class="submit-btn">Cadastrar</button>
+        </div>
+    </div>
+
+    <!-- ===================== Scripts ===================== -->
+    <script src="blog.js"></script>
+</body>
+
+</html>

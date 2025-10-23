@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Estilo de Vida - Tech Game</title>
+    <link rel="stylesheet" href="galeria.css">
+    <style>
+        /* Estilização específica do botão de modo */
+        
+        #toggleMode {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background: linear-gradient(45deg, #00eaff, #ff00ff);
+            color: #0f1c3d;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px #00eaff;
+        }
+        
+        #toggleMode:hover {
+            background: linear-gradient(45deg, #ff00ff, #00eaff);
+            box-shadow: 0 0 20px #ff00ff;
+            transform: scale(1.1);
+        }
+        
+        #toggleMode.dark-mode {
+            background: linear-gradient(45deg, #00ccff, #ff33ff);
+            color: #e0e0e0;
+        }
+        
+        #toggleMode.dark-mode:hover {
+            background: linear-gradient(45deg, #ff33ff, #00aaff);
+            box-shadow: 0 0 20px #ff33ff;
+        }
+        /* Ajuste do tamanho do logo */
+        
+        .logo {
+            max-width: 100px;
+            height: auto;
+            margin: 10px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        /* Estilização ajustada do modal */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            /* Permite rolagem se o conteúdo for grande */
+        }
+        
+        .modal img {
+            max-width: 90%;
+            max-height: 80vh;
+            /* Limita a altura ao 80% da viewport */
+            object-fit: contain;
+            border: 2px solid #00eaff;
+            /* Borda neon para destacar */
+            border-radius: 10px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #00ffcc;
+            font-size: 30px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: #ff00ff;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: #00ffcc;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .modal-nav:hover {
+            color: #ff00ff;
+            opacity: 0.8;
+        }
+        
+        .modal-prev {
+            left: 20px;
+        }
+        
+        .modal-next {
+            right: 20px;
+        }
+        
+        .modal-title {
+            color: #00ffcc;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            max-width: 90%;
+            text-shadow: 0 0 5px #00ffcc;
+        }
+        
+        .dark-mode .modal img {
+            border-color: #00ccff;
+        }
+        
+        .dark-mode .modal-close,
+        .dark-mode .modal-nav,
+        .dark-mode .modal-title {
+            color: #00ffaa;
+        }
+        
+        .dark-mode .modal-close:hover,
+        .dark-mode .modal-nav:hover {
+            color: #ff33ff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="assets/logo.png" alt="Tech Game Logo" class="logo">
+        <h1>Galeria de Estilo de Vida</h1>
+        <p>Inspire-se com nossos setups gamers e de escritório que combinam tecnologia, conforto e estilo.</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="galeria.html">Galeria</a></li>
+            </ul>
+        </nav>
+        <button id="toggleMode">☀</button>
+    </header>
+
+    <section class="filters">
+        <button onclick="filterCategory('all')" class="active">Todos</button>
+        <button onclick="filterCategory('gamer')">Setup Gamer</button>
+        <button onclick="filterCategory('office')">Setup de Escritório</button>
+        <button onclick="filterCategory('hybrid')">Setup Híbrido</button>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <!-- Setup Gamer -->
+        <div class="item categoria1" data-category="gamer">
+            <img src="assets/setupneon.png" alt="Setup Gamer Neon">
+            <h3>Setup Gamer Neon RGB</h3>
+            <p>Viva a emoção dos jogos com um setup equipado com teclado mecânico RGB, mouse de alta precisão e monitor 144Hz. Perfeito para noites épicas de competições online.</p>
+            <p class="price">A partir de R$ 5.999,00</p>
+            <a href="#" class="explore-btn" onclick="openModal('assets/setupneon.png', 'Setup Gamer Neon RGB')">Explorar Setup</a>
+        </div>
+
+        <div class="item categoria1" data-category="gamer">
+            <img src="assets/setup pro.jpg" alt="Setup Gamer Pro">
+            <h3>Setup Gamer Pro</h3>
+            <p>Domine o campo de batalha com um desktop RTX 4070, cadeira ergonômica e periféricos premium. Projetado para quem busca desempenho máximo nos eSports.</p>
+            <p class="price">A partir de R$ 7.499,00</p>
+            <a href="#" class="explore-btn" onclick="openModal('assets/setup pro.jpg', 'Setup Gamer Pro')">Explorar Setup</a>
+        </div>
+
+        <div class="item categoria1" data-category="gamer">
+            <img src="assets/setuppersonalizado.jpg" alt="Setup Gamer Personalizado">
+            <h3>Setup Gamer Personalizado</h3>
+            <p>Crie o ambiente dos seus sonhos com um PC customizável, iluminação RGB e acessórios que refletem sua personalidade e paixão pelos jogos.</p>
+            <p class="price">A partir de R$ 4.299,00</p>
+            <a href="#" class="explore-btn" onclick="openModal('assets/setuppersonalizado.jpg', 'Setup Gamer Personalizado')">Explorar Setup</a>
+        </div>
+
+        <!-- Setup de Escritório -->
+        <div class="item categoria2" data-category="office">
+            <img src="https://images.pexels.com/photos/434346/pexels-photo-434346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Setup de Escritório Moderno">
+            <h3>Setup de Escritório Moderno</h3>
+            <p>Maximize sua produtividade com um monitor ajustável, teclado ergonômico e suporte organizado. Ideal para longas horas de trabalho com conforto e estilo.</p>
+            <p class="price">A partir de R$ 1.499,00</p>
+            <a href="#" class="explore-btn" onclick="openModal('https://images.pexels.com/photos/434346/pexels-photo-434346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Setup de Escritório Moderno')">Explorar Setup</a>
+        </div>
+
+        <div class="item categoria2" data-category="office">
+            <img src="assets/setupescritorio.jpg" alt="Setup de Escritório Minimalista">
+            <h3>Setup de Escritório Minimalista</h3>
+            <p>Simplicidade e foco com um mousepad estendido, teclado silencioso e mesa ajustável. Perfeito para um espaço limpo e inspirador no seu dia a dia.</p>
+            <p class="price">A partir de R$ 899,00</p>
+            <a href="#" class="explore-btn" onclick="openModal('assets/setupescritorio.jpg', 'Setup de Escritório Minimalista')">Explorar Setup</a>
+        </div>
+
+        <div class="item categoria2" data-category="office">
+            <img src="assets/setupexecutivo.webp" alt="Setup de Escritório Executivo">
+            <h3>Setup de Escritório Executivo</h3>
+            <p>Combine sofisticação e funcionalidade com suporte de monitor ajustável, periféricos premium e design elegante. Para quem busca excelência no trabalho.</p>
+            <p class="price">A partir de R$ 1.999,00</p>
+            <a href="#" class="explore-btn" onclick="openModal('assets/setupexecutivo.webp', 'Setup de Escritório Executivo')">Explorar Setup</a>
+        </div>
+
+        <!-- Setup Híbrido -->
+        <div class="item categoria3" data-category="hybrid">
+            <img src="assets/setupcompacto.png" alt="Setup Híbrido Compacto">
+            <h3>Setup Híbrido Compacto</h3>
+            <p>Versatilidade para trabalho e lazer com um notebook gamer RTX 3060, mousepad estendido e headset ergonômico. Ideal para quem alterna entre jogos e produtividade.</p>
+            <p class="price">A partir de R$ 5.499,00</p>
+            <a href="#" class="explore-btn" onclick="openModal('assets/setupcompacto.png', 'Setup Híbrido Compacto')">Explorar Setup</a>
+        </div>
+
+        <div class="item categoria3" data-category="hybrid">
+            <img src="https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Setup Híbrido Multitarefa">
+            <h3>Setup Híbrido Multitarefa</h3>
+            <p>Equilibre trabalho e diversão com um monitor ultrawide, teclado mecânico silencioso e acessórios que otimizam seu fluxo criativo.</p>
+            <p class="price">A partir de R$ 3.299,00</p>
+            <a href="#" class="explore-btn" onclick="openModal('https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'Setup Híbrido Multitarefa')">Explorar Setup</a>
+        </div>
+
+        <div class="item categoria3" data-category="hybrid">
+            <img src="assets/setuphibridopremium.jpg" alt="Setup Híbrido Premium">
+            <h3>Setup Híbrido Premium</h3>
+            <p>Um ambiente que une estética e performance com PC gamer, periféricos RGB e mesa ajustável. Perfeito para quem quer tudo em um só lugar.</p>
+            <p class="price">A partir de R$ 6.999,00</p>
+            <a href="#" class="explore-btn" onclick="openModal('assets/setuphibridopremium.jpg', 'Setup Híbrido Premium')">Explorar Setup</a>
+        </div>
+    </section>
+
+    <!-- Modal para visualização da imagem -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <span class="modal-nav modal-prev" onclick="navigateImage(-1)">&#10094;</span>
+        <img id="modalImage" src="" alt="Imagem em tela cheia">
+        <span class="modal-nav modal-next" onclick="navigateImage(1)">&#10095;</span>
+        <div class="modal-title" id="modalTitle"></div>
+    </div>
+
+    <script>
+        let currentImageIndex = 0;
+        const galleryItems = Array.from(document.querySelectorAll('.gallery .item'));
+        const images = galleryItems.map(item => item.querySelector('img').src);
+        const titles = galleryItems.map(item => item.querySelector('h3').textContent);
+
+        function filterCategory(cat) {
+            const buttons = document.querySelectorAll('.filters button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`button[onclick="filterCategory('${cat}')"]`).classList.add('active');
+
+            const items = document.querySelectorAll('.item');
+            items.forEach(item => {
+                item.style.display = (cat === 'all' || item.dataset.category === cat) ? 'block' : 'none';
+            });
+        }
+
+        // Função para abrir o modal com a imagem e título
+        function openModal(imageSrc, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            modalImage.src = imageSrc;
+            modalTitle.textContent = title;
+            currentImageIndex = images.indexOf(imageSrc);
+            if (currentImageIndex === -1) currentImageIndex = 0; // Garante índice válido
+            modal.style.display = 'flex';
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+
+        // Função para navegar entre as imagens
+        function navigateImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            modalImage.src = images[currentImageIndex];
+            modalTitle.textContent = titles[currentImageIndex];
+        }
+
+        // Adiciona evento de clique aos botões "Explorar Setup"
+        document.querySelectorAll('.explore-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const imageSrc = button.parentElement.querySelector('img').src;
+                const title = button.parentElement.querySelector('h3').textContent;
+                openModal(imageSrc, title);
+            });
+        });
+
+        // Fecha o modal ao clicar fora da imagem
+        document.getElementById('imageModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
+        });
+
+        // Função para alternar entre modo claro e escuro
+        function toggleDarkMode() {
+            const body = document.body;
+            const toggleButton = document.getElementById('toggleMode');
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                toggleButton.textContent = '☀';
+            } else {
+                body.classList.add('dark-mode');
+                toggleButton.textContent = '🌙';
+            }
+            toggleButton.classList.toggle('dark-mode');
+        }
+
+        // Define o evento de clique no botão
+        document.getElementById('toggleMode').addEventListener('click', toggleDarkMode);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localização - [SEU NEGÓCIO]</title>
+
+    <!-- CSS do Projeto -->
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mapa.css">
+
+    <!-- Leaflet CSS - Biblioteca de Mapas -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+    <header>
+        <div class="caixa">
+            <h1><img src="imagens/logo.png" alt="Logo [SEU NEGÓCIO]"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="mapa.html">Localização</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2 class="titulo-principal-produtos">Como Chegar</h2>
+
+        <!-- Painel de Controles -->
+        <div class="mapa-controles">
+            <div class="controle-item">
+                <button class="btn-localizacao" id="btnMinhaLocalizacao">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0 0 13 3.06V1h-2v2.06A8.994 8.994 0 0 0 3.06 11H1v2h2.06A8.994 8.994 0 0 0 11 20.94V23h2v-2.06A8.994 8.994 0 0 0 20.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                    </svg>
+                    Minha Localização
+                </button>
+            </div>
+
+            <div class="controle-item">
+                <button class="btn-rotas" id="btnCalcularRota">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/>
+                    </svg>
+                    Calcular Rota
+                </button>
+            </div>
+
+            <div class="controle-item">
+                <select id="tipoMapa" class="select-tipo-mapa">
+                    <option value="streets">Ruas</option>
+                    <option value="satellite">Satélite</option>
+                    <option value="terrain">Terreno</option>
+                </select>
+            </div>
+
+            <div class="controle-item">
+                <button class="btn-compartilhar" id="btnCompartilhar">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                    </svg>
+                    Compartilhar
+                </button>
+            </div>
+        </div>
+
+        <!-- Container do Mapa -->
+        <div class="mapa-container">
+            <!-- Mapa será renderizado aqui -->
+            <div id="mapa" class="mapa"></div>
+
+            <!-- Painel de Informações -->
+            <div class="info-panel" id="infoPanel">
+                <button class="fechar-panel" id="fecharPanel">×</button>
+                <div class="info-content" id="infoContent">
+                    <!-- Conteúdo dinâmico -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards de Localização -->
+        <section class="localizacoes-disponiveis">
+            <h3>Nossas Unidades</h3>
+            <div class="localizacoes-grid">
+                <!-- Unidade 1 - PERSONALIZE -->
+                <div class="local-card" data-lat="-25.4284" data-lng="-49.2733" data-id="unidade1">
+                    <div class="local-icon">📍</div>
+                    <h4>Unidade Centro</h4>
+                    <p class="local-endereco">Rua Exemplo, 123<br>Centro - Curitiba/PR</p>
+                    <p class="local-horario">Seg-Sex: 8h-18h | Sáb: 8h-14h</p>
+                    <div class="local-acoes">
+                        <button class="btn-ir-mapa" data-target="unidade1">Ver no Mapa</button>
+                        <a href="tel:+5541999998888" class="btn-ligar">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg> Ligar
+                        </a>
+                    </div>
+                    <span class="distancia" data-distancia="unidade1">Calculando...</span>
+                </div>
+
+                <!-- Unidade 2 - PERSONALIZE -->
+                <div class="local-card" data-lat="-25.4195" data-lng="-49.2646" data-id="unidade2">
+                    <div class="local-icon">📍</div>
+                    <h4>Unidade Batel</h4>
+                    <p class="local-endereco">Av. do Batel, 456<br>Batel - Curitiba/PR</p>
+                    <p class="local-horario">Seg-Sex: 9h-19h | Sáb: 9h-15h</p>
+                    <div class="local-acoes">
+                        <button class="btn-ir-mapa" data-target="unidade2">Ver no Mapa</button>
+                        <a href="tel:+5541888887777" class="btn-ligar">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg> Ligar
+                        </a>
+                    </div>
+                    <span class="distancia" data-distancia="unidade2">Calculando...</span>
+                </div>
+
+                <!-- Adicione mais unidades conforme necessário -->
+            </div>
+        </section>
+
+        <!-- Instruções de Acesso -->
+        <section class="instrucoes-acesso">
+            <h3>Como Chegar</h3>
+            <div class="instrucoes-grid">
+                <div class="instrucao-item">
+                    <div class="instrucao-icon">🚗</div>
+                    <h4>De Carro</h4>
+                    <p>Estacionamento próprio disponível. Acesso fácil pela [NOME DA VIA PRINCIPAL].</p>
+                </div>
+                <div class="instrucao-item">
+                    <div class="instrucao-icon">🚌</div>
+                    <h4>Transporte Público</h4>
+                    <p>Linhas de ônibus: [NÚMEROS DAS LINHAS]. Ponto em frente ao estabelecimento.</p>
+                </div>
+                <div class="instrucao-item">
+                    <div class="instrucao-icon">🚶</div>
+                    <h4>Acessibilidade</h4>
+                    <p>Entrada acessível para cadeirantes. Elevador disponível.</p>
+                </div>
+                <div class="instrucao-item">
+                    <div class="instrucao-icon">🅿️</div>
+                    <h4>Estacionamento</h4>
+                    <p>Vagas gratuitas para clientes. [XX] vagas disponíveis.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <img src="imagens/logo-branco.png" alt="Logo [SEU NEGÓCIO]">
+        <p class="copyright">&copy; Copyright [SEU NEGÓCIO] - 2024</p>
+    </footer>
+
+    <!-- Leaflet JS - Biblioteca de Mapas -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Script do Mapa -->
+    <script src="mapa.js"></script>
+</body>
+
+</html>

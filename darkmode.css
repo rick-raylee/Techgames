@@ -1,0 +1,174 @@
+/* dark-mode.css - Estilos para o sistema de tema escuro com alternância suave e personalização */
+
+:root {
+    /* Tema Escuro (padrão) */
+    --bg-body: #1a1a1a;
+    --text-color: #e0e0e0;
+    --link-color: #4ecca3;
+    --link-hover: #ff6b00;
+    --accent-line: #ff6b00;
+    --btn-bg: #2a2a2a;
+    --btn-text: #fff;
+    --btn-hover: #3a3a3a;
+    --shadow-dark: rgba(0, 0, 0, 0.7);
+    --focus-outline: #ff6b00;
+    /* Filtros para imagens */
+    --img-filter: brightness(0.9) contrast(1.1);
+}
+
+[data-theme="light"] {
+    /* Tema Claro */
+    --bg-body: #f0f0f0;
+    --text-color: #333;
+    --link-color: #ff6b00;
+    --link-hover: #4ecca3;
+    --accent-line: #ff6b00;
+    --btn-bg: #ffffff;
+    --btn-text: #333;
+    --btn-hover: #e0e0e0;
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --focus-outline: #ff6b00;
+    /* Filtros para imagens */
+    --img-filter: brightness(1.1) contrast(1.1);
+}
+
+
+/* Transições suaves para todos os elementos */
+
+html,
+body,
+.container,
+.galeria,
+.estatisticas,
+.faq-section,
+.depoimentos,
+a,
+button,
+input,
+img {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+
+/* Botão flutuante no topo */
+
+.dark-mode-toggle {
+    position: fixed;
+    top: 80px !important;
+    /* Posição fixa a 80px do topo */
+    left: 80px !important;
+    /* Posição fixa a 80px da esquerda */
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10rem;
+    background-color: var(--btn-bg) !important;
+    border: none;
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    /* Tamanho do ícone */
+    color: var(--btn-text) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    line-height: 50px;
+    /* Alinhamento vertical */
+    overflow: visible;
+    /* Garantir visibilidade do ícone */
+    transition: all 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.dark-mode-toggle:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-line);
+    border-radius: 10rem;
+    z-index: -2;
+}
+
+.dark-mode-toggle:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--btn-hover);
+    transition: all 0.3s ease;
+    border-radius: 10rem;
+    z-index: -1;
+}
+
+.dark-mode-toggle:hover {
+    color: #fff;
+}
+
+.dark-mode-toggle:hover:before {
+    width: 100%;
+}
+
+.dark-mode-toggle:focus {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: 2px;
+}
+
+
+/* Estilos para componentes existentes */
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-color);
+}
+
+a {
+    color: var(--link-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+.galeria-item img,
+.depoimentos img,
+.faq-section img {
+    filter: var(--img-filter);
+    transition: filter 0.3s ease;
+}
+
+.estatisticas,
+.faq-section h2::after,
+.depoimentos h2::after {
+    background-color: var(--accent-line);
+}
+
+
+/* Responsividade do botão flutuante */
+
+@media (max-width: 768px) {
+    .dark-mode-toggle {
+        top: 10px !important;
+        left: 10px !important;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+
+/* Alternativa no topo absoluto (descomente se preferir)
+.dark-mode-toggle {
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+*/

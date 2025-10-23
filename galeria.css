@@ -1,0 +1,273 @@
+/* galeria.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #0f1c3d, #1a2a6c);
+    /* Gradiente futurista azul escuro a roxo - Light Mode */
+    transition: background 0.4s ease, color 0.4s ease;
+    /* Transição suave para background e cor */
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #0a0f24, #0f1a44);
+    /* Gradiente mais escuro para Dark Mode */
+    color: #e0e0e0;
+    /* Texto claro padrão no dark mode */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00ffcc;
+    /* Ciano neon para texto do cabeçalho */
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+    /* Efeito neon */
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+header.dark-mode {
+    color: #00ffaa;
+    /* Ciano neon ajustado para Dark Mode */
+    text-shadow: 0 0 15px #00ffaa, 0 0 25px #00ffaa;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #00eaff;
+    /* Ciano claro para links */
+    text-shadow: 0 0 5px #00eaff;
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+nav a:hover {
+    color: #ff00ff;
+    /* Roxo neon no hover */
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+nav.dark-mode a {
+    color: #00ccff;
+    /* Ciano ajustado para Dark Mode */
+    text-shadow: 0 0 7px #00ccff;
+}
+
+nav.dark-mode a:hover {
+    color: #ff33ff;
+    /* Roxo ajustado para Dark Mode */
+    text-shadow: 0 0 12px #ff33ff;
+}
+
+.filters {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.filters button {
+    margin: 0 10px;
+    padding: 10px;
+    background: linear-gradient(45deg, #00ffcc, #0066ff);
+    /* Gradiente ciano a azul */
+    color: #0f1c3d;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.4s ease;
+    /* Transição mais suave */
+    box-shadow: 0 0 10px #00ffcc;
+    font-weight: bold;
+    /* Adicionado para destacar botões */
+}
+
+.filters button.active {
+    background: linear-gradient(45deg, #0066ff, #00ffcc);
+    /* Inversão do gradiente */
+    box-shadow: 0 0 15px #0066ff;
+}
+
+.filters button:hover {
+    background: linear-gradient(45deg, #ff00ff, #00eaff);
+    /* Gradiente roxo a ciano */
+    box-shadow: 0 0 20px #ff00ff;
+    transform: scale(1.05);
+}
+
+.filters.dark-mode button {
+    color: #e0e0e0;
+    /* Texto claro para Dark Mode */
+    background: linear-gradient(45deg, #00ccff, #0044cc);
+}
+
+.filters.dark-mode button.active {
+    background: linear-gradient(45deg, #0044cc, #00ccff);
+    box-shadow: 0 0 15px #0044cc;
+}
+
+.filters.dark-mode button:hover {
+    background: linear-gradient(45deg, #ff33ff, #00aaff);
+    box-shadow: 0 0 20px #ff33ff;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.item {
+    background: linear-gradient(135deg, #1a2a6c, #0f1c3d);
+    /* Gradiente interno futurista */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+    /* Sombra neon ciano */
+    transition: all 0.4s ease;
+    /* Transição mais suave */
+    border: 1px solid #00eaff;
+}
+
+.item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
+}
+
+.item.dark-mode {
+    background: linear-gradient(135deg, #0f1a44, #0a0f24);
+    box-shadow: 0 0 15px rgba(0, 204, 153, 0.3);
+    border-color: #00ccff;
+}
+
+.item.dark-mode:hover {
+    box-shadow: 0 0 25px rgba(0, 204, 153, 0.5);
+}
+
+.item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    max-width: 100%;
+    filter: brightness(1.1);
+    /* Aumenta o brilho para um toque gamer */
+    transition: filter 0.4s ease;
+    /* Transição mais suave */
+}
+
+.item:hover img {
+    filter: brightness(1.3) contrast(1.1);
+    /* Efeito de destaque ao hover */
+}
+
+.item h3 {
+    margin: 10px;
+    color: #00ffcc;
+    /* Ciano neon para títulos */
+    text-shadow: 0 0 5px #00ffcc;
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.item p {
+    margin: 0 10px 5px;
+    color: #a3bffa;
+    /* Azul claro para texto descritivo */
+    transition: color 0.4s ease;
+}
+
+.item .price {
+    margin: 0 10px 10px;
+    font-weight: bold;
+    color: #ff00ff;
+    /* Roxo neon para preços */
+    text-shadow: 0 0 5px #ff00ff;
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.item.dark-mode h3 {
+    color: #00ffaa;
+    text-shadow: 0 0 7px #00ffaa;
+}
+
+.item.dark-mode p {
+    color: #8a9ed5;
+}
+
+.item.dark-mode .price {
+    color: #ff33ff;
+    text-shadow: 0 0 7px #ff33ff;
+}
+
+.item a {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    background: linear-gradient(45deg, #00eaff, #ff00ff);
+    /* Gradiente ciano a roxo */
+    color: #0f1c3d;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.4s ease;
+    /* Transição mais suave */
+    box-shadow: 0 0 10px #00eaff;
+}
+
+.item a:hover {
+    background: linear-gradient(45deg, #ff00ff, #00eaff);
+    /* Inversão do gradiente */
+    box-shadow: 0 0 20px #ff00ff;
+    transform: scale(1.05);
+}
+
+.item.dark-mode a {
+    color: #e0e0e0;
+    background: linear-gradient(45deg, #00ccff, #ff33ff);
+}
+
+.item.dark-mode a:hover {
+    background: linear-gradient(45deg, #ff33ff, #00aaff);
+    box-shadow: 0 0 20px #ff33ff;
+}
+
+
+/* Estilização do botão de modo */
+
+#toggleMode {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: linear-gradient(45deg, #00eaff, #ff00ff);
+    color: #0f1c3d;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 10px #00eaff;
+}
+
+#toggleMode:hover {
+    background: linear-gradient(45deg, #ff00ff, #00eaff);
+    box-shadow: 0 0 20px #ff00ff;
+    transform: scale(1.1);
+}
+
+#toggleMode.dark-mode {
+    background: linear-gradient(45deg, #00ccff, #ff33ff);
+    color: #e0e0e0;
+}
+
+#toggleMode.dark-mode:hover {
+    background: linear-gradient(45deg, #ff33ff, #00aaff);
+    box-shadow: 0 0 20px #ff33ff;
+}
