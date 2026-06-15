@@ -1,151 +1,280 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - TechGame</title>
-    <link rel="stylesheet" href="mapa.css">
+    
+    <!-- CSS global e de reset -->
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
         body {
-            margin: 0;
-            padding: 0;
             font-family: 'Poppins', sans-serif;
-            color: #f8f8f8;
             min-height: 100vh;
-            /* Fundo gamer neon da internet */
-            background: url("https://images.unsplash.com/photo-1619731925217-14e5e0db41e4?w=1920") no-repeat center center fixed;
+            background: #0f0f1a;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Ambient background image for contact section */
+        .contact-section-bg {
+            background: url("https://images.unsplash.com/photo-1619731925217-14e5e0db41e4?w=1920") no-repeat center center;
             background-size: cover;
+            padding: 60px 20px;
+            min-height: calc(100vh - 180px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
-        header {
-            background: rgba(0, 0, 0, 0.8);
-            color: #4ecca3;
-            text-align: center;
-            padding: 20px 0;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .container {
-            width: 80%;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
+        .contact-box {
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
             background: rgba(15, 15, 26, 0.85);
+            backdrop-filter: blur(10px);
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--accent-color, #4ecca3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(78, 204, 163, 0.2);
+            text-align: center;
         }
         
         h2 {
-            color: #4ecca3;
+            color: var(--accent-color, #4ecca3);
             font-family: 'Orbitron', sans-serif;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         h3 {
             color: #00e0ff;
             font-family: 'Orbitron', sans-serif;
-            margin-top: 25px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
         
-        .description {
-            margin-top: 20px;
-            font-size: 1.1em;
-            line-height: 1.6;
+        .description p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--secondary-text, #aaa);
         }
         
         .contact-info {
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 1.1em;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
         }
         
         .contact-info p {
-            margin: 10px 0;
+            margin: 0;
+            color: var(--text-color, #fff);
         }
         
-        .redirect {
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: linear-gradient(135deg, #4ecca3, #1a1a2e);
+        .contact-actions {
+            margin-top: 35px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-action {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--accent-color, #4ecca3), #0f3460);
             color: white;
             text-decoration: none;
             border-radius: 8px;
-            display: inline-block;
             font-weight: 600;
             transition: all 0.3s ease;
-        }
-        
-        .redirect:hover {
-            background: linear-gradient(135deg, #00e0ff, #0f3460);
-            transform: translateY(-3px);
-        }
-        
-        #map {
-            height: 400px;
-            width: 100%;
-            margin-top: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            display: none;
-            /* Ocultei o mapa original, pois será em outra página */
-        }
-        
-        .map-button {
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: linear-gradient(135deg, #4ecca3, #1a1a2e);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            display: inline-block;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(78, 204, 163, 0.3);
+            border: none;
             cursor: pointer;
         }
         
-        .map-button:hover {
+        .btn-action:hover {
             background: linear-gradient(135deg, #00e0ff, #0f3460);
             transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 224, 255, 0.4);
+        }
+
+        /* Light mode adjustments */
+        [data-theme="light"] .contact-box {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-color: #0f3460;
+        }
+
+        [data-theme="light"] h2 {
+            color: #0f3460;
+        }
+
+        [data-theme="light"] h3 {
+            color: #764ba2;
+        }
+
+        [data-theme="light"] .btn-action {
+            background: linear-gradient(135deg, #0f3460, #16213e);
+            box-shadow: 0 4px 15px rgba(15, 52, 96, 0.3);
+        }
+
+        [data-theme="light"] .btn-action:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            box-shadow: 0 8px 20px rgba(118, 75, 162, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .contact-box {
+                padding: 25px;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 
 <body>
-
+    <!-- Unified Header -->
     <header>
-        <h1>TechGame - Loja de Games e Periféricos</h1>
+        <div class="container">
+            <div class="logo-container">
+                <img src="assets/baixados.png" alt="Tech Game Logo" class="logo-img">
+            </div>
+            <nav class="menu" role="navigation" aria-label="Menu principal">
+                <ul>
+                    <li class="header-menu">
+                        <a href="index.html#faq" style="color: #ffffff;">FAQ</a>
+                        <div class="category-menu">
+                            <button class="category-menu-button">Categorias</button>
+                            <div class="category-dropdown">
+                                <a href="index.html#mouses">Mouse</a>
+                                <a href="index.html#teclados">Teclado</a>
+                                <a href="index.html#placas-mae">Placa Mãe</a>
+                                <a href="index.html#jogos-ps5">Jogos PS5</a>
+                                <a href="index.html#estatuas-3d">Estátuas 3D</a>
+                                <a href="index.html#consoles">Consoles</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="galeria.html" style="color: #ffffff;">Estilos de Vida</a></li>
+                    <li><a href="blog.html" style="color: #ffffff;">Blog</a></li>
+                    <li><a href="mapa.html" style="color: #ffffff;">Localização</a></li>
+                    <li><a href="calculadora.html" style="color: #ffffff;">Calculadora</a></li>
+                    <li><a href="agendamento.html" style="color: #ffffff;">Agendar</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <input type="checkbox" id="theme-toggle-checkbox" class="theme-toggle-checkbox">
+                <label for="theme-toggle-checkbox" class="theme-toggle-label"><span class="theme-toggle-icon"></span></label>
+            </div>
+        </div>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="redirect">← Voltar para a Home</a>
+    <!-- Unified Main Layout with Sidebar -->
+    <main>
+        <section class="contact-section-bg">
+            <div class="contact-box">
+                <h2>Fale Conosco</h2>
+                <p style="color: var(--text-color); font-size: 1.1rem;">Entre em contato conosco para tirar dúvidas, fazer sugestões ou obter suporte sobre seus pedidos!</p>
 
-        <h2>Contato</h2>
-        <p>Entre em contato conosco para dúvidas, sugestões ou para saber mais sobre nossos produtos!</p>
+                <div class="description">
+                    <h3>Sobre a TechGame</h3>
+                    <p>
+                        A <b>TechGame</b> é uma loja especializada em produtos para gamers e entusiastas de tecnologia. Oferecemos o que há de melhor em periféricos de alta performance, hardware moderno, consoles de última geração e peças exclusivas em impressão 3D.
+                    </p>
+                </div>
 
-        <div class="description">
-            <h3>Sobre a TechGame</h3>
-            <p>
-                A <b>TechGame</b> é uma loja especializada na venda de produtos para gamers, oferecendo desde consoles e jogos até periféricos como teclados, mouses, headsets e muito mais. Com preços competitivos e atendimento especializado, garantimos
-                a melhor experiência para nossos clientes.
-            </p>
+                <div class="contact-info">
+                    <p><strong><i class="fas fa-phone"></i> Telefone:</strong> (11) 98765-4321</p>
+                    <p><strong><i class="fas fa-envelope"></i> Email:</strong> suporte@techgame.com</p>
+                    <p><strong><i class="file-invoice"></i> CNPJ:</strong> 12.345.678/0001-99</p>
+                    <p><strong><i class="fas fa-map-marker-alt"></i> Endereço:</strong> Rua Gamer, 123, São Paulo - SP</p>
+                </div>
+
+                <div class="contact-actions">
+                    <a href="index.html" class="btn-action">← Voltar para a Home</a>
+                    <a href="mapa.html" class="btn-action">Ver Mapa de Unidades <i class="fas fa-map"></i></a>
+                    <a href="agendamento.html" class="btn-action">Agendar Visita <i class="fas fa-calendar-alt"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Unified Mobile Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu TechGames</h3>
+            <button class="close-btn" id="closeSidebar">&times;</button>
         </div>
-
-        <div class="contact-info">
-            <p><strong>📞 Telefone:</strong> (11) 91234-5678</p>
-            <p><strong>📝 CNPJ:</strong> 12.345.678/0001-99</p>
-            <p><strong>📍 Endereço:</strong> Rua Gamer Fictícia, 456, Cidade Virtual - CV, Brasil</p>
-            <a href="mapa.html" class="map-button">Ver Mapa</a>
-        </div>
-
-        <div id="map"></div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html" class="categoria-btn">Home</a></li>
+            <li>
+                <div class="sidebar-submenu-title">Categorias</div>
+                <ul class="sidebar-submenu">
+                    <li><button class="categoria-btn" data-target="mouses">Mouses</button></li>
+                    <li><button class="categoria-btn" data-target="teclados">Teclados</button></li>
+                    <li><button class="categoria-btn" data-target="placas-mae">Placas Mãe</button></li>
+                    <li><button class="categoria-btn" data-target="jogos-ps5">Jogos PS5</button></li>
+                    <li><button class="categoria-btn" data-target="estatuas-3d">Estátuas 3D</button></li>
+                    <li><button class="categoria-btn" data-target="consoles">Consoles</button></li>
+                </ul>
+            </li>
+            <li><a href="galeria.html" class="categoria-btn">Estilos de Vida</a></li>
+            <li><a href="blog.html" class="categoria-btn">Blog</a></li>
+            <li><a href="mapa.html" class="categoria-btn">Localização</a></li>
+            <li><a href="calculadora.html" class="categoria-btn">Calculadora</a></li>
+            <li><a href="agendamento.html" class="categoria-btn">Agendar</a></li>
+            <li><a href="contato.html" class="categoria-btn">Contato</a></li>
+        </ul>
     </div>
-    <script src="mapa.js"></script>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+
+    <!-- Unified Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section contact">
+                    <h3 style="color: #ffffff;">Contato</h3>
+                    <p style="color: #e2e8f0;"><i class="fas fa-envelope"></i> Email: suporte@techgame.com</p>
+                    <p style="color: #e2e8f0;"><i class="fas fa-phone"></i> Telefone: (11) 98765-4321</p>
+                    <p style="color: #e2e8f0;"><i class="fas fa-map-marker-alt"></i> Endereço: Rua Gamer, 123, São Paulo - SP</p>
+                </div>
+                <div class="footer-section social">
+                    <h3 style="color: #ffffff;">Redes Sociais</h3>
+                    <ul class="social-links">
+                        <li><a href="https://facebook.com/techgame" target="_blank" aria-label="Facebook" style="color: #e2e8f0;"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="https://twitter.com/techgame" target="_blank" aria-label="Twitter" style="color: #e2e8f0;"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="https://instagram.com/techgame" target="_blank" aria-label="Instagram" style="color: #e2e8f0;"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section links">
+                    <h3 style="color: #ffffff;">Links Úteis</h3>
+                    <ul>
+                        <li><a href="index.html#ofertas" style="color: #e2e8f0;">Ofertas</a></li>
+                        <li><a href="index.html#faq" style="color: #e2e8f0;">FAQ</a></li>
+                        <li><a href="contato.html" style="color: #e2e8f0;">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p style="color: #e2e8f0;">&copy; 2023-2025 Tech Game. Todos os direitos reservados.</p></div>
+        </div>
+    </footer>
+
+    <!-- Global Scripts -->
+    <script src="scripts.js"></script>
 </body>
 
 </html>

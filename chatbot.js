@@ -478,16 +478,19 @@ class ChatBot {
     }
 }
 
-// Inicializar o chatbot quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-    // Verificar se todos os elementos necessários existem
-    if (document.getElementById('chatButton')) {
+// Inicializar o chatbot quando o DOM estiver pronto (suporta injeção dinâmica)
+function initializeChatbotInstance() {
+    if (document.getElementById('chatButton') && !window.chatBot) {
         window.chatBot = new ChatBot();
         console.log('Chatbot inicializado com sucesso!');
-    } else {
-        console.warn('Elementos do chatbot não encontrados. Certifique-se de incluir o HTML do widget.');
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeChatbotInstance);
+} else {
+    initializeChatbotInstance();
+}
 
 // Funções globais para controle externo
 function openChatBot() {

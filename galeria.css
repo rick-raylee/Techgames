@@ -1,9 +1,8 @@
 /* galeria.css */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 20px;
     background: linear-gradient(135deg, #0f1c3d, #1a2a6c);
     /* Gradiente futurista azul escuro a roxo - Light Mode */
     transition: background 0.4s ease, color 0.4s ease;
@@ -17,54 +16,39 @@ body.dark-mode {
     /* Texto claro padrão no dark mode */
 }
 
-header {
+.galeria-intro {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.galeria-intro h1 {
     color: #00ffcc;
     /* Ciano neon para texto do cabeçalho */
     text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
     /* Efeito neon */
+    font-size: 2.5rem;
+    margin-bottom: 15px;
     transition: color 0.4s ease, text-shadow 0.4s ease;
 }
 
-header.dark-mode {
+body.dark-mode .galeria-intro h1 {
     color: #00ffaa;
     /* Ciano neon ajustado para Dark Mode */
     text-shadow: 0 0 15px #00ffaa, 0 0 25px #00ffaa;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+.galeria-intro p {
+    color: #a3bffa;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: color 0.4s ease;
 }
 
-nav a {
-    text-decoration: none;
-    color: #00eaff;
-    /* Ciano claro para links */
-    text-shadow: 0 0 5px #00eaff;
-    transition: color 0.4s ease, text-shadow 0.4s ease;
-}
-
-nav a:hover {
-    color: #ff00ff;
-    /* Roxo neon no hover */
-    text-shadow: 0 0 10px #ff00ff;
-}
-
-nav.dark-mode a {
-    color: #00ccff;
-    /* Ciano ajustado para Dark Mode */
-    text-shadow: 0 0 7px #00ccff;
-}
-
-nav.dark-mode a:hover {
-    color: #ff33ff;
-    /* Roxo ajustado para Dark Mode */
-    text-shadow: 0 0 12px #ff33ff;
+body.dark-mode .galeria-intro p {
+    color: #8a9ed5;
 }
 
 .filters {
@@ -74,7 +58,7 @@ nav.dark-mode a:hover {
 
 .filters button {
     margin: 0 10px;
-    padding: 10px;
+    padding: 10px 20px;
     background: linear-gradient(45deg, #00ffcc, #0066ff);
     /* Gradiente ciano a azul */
     color: #0f1c3d;
@@ -238,36 +222,90 @@ nav.dark-mode a:hover {
     box-shadow: 0 0 20px #ff33ff;
 }
 
+/* === GALERIA IMAGE MODAL === */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1100;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
 
-/* Estilização do botão de modo */
+.modal img {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border: 2px solid #00eaff;
+    border-radius: 10px;
+}
 
-#toggleMode {
+.modal-close {
     position: absolute;
     top: 20px;
     right: 20px;
-    padding: 10px 15px;
-    background: linear-gradient(45deg, #00eaff, #ff00ff);
-    color: #0f1c3d;
-    border: none;
-    border-radius: 50%;
+    color: #00ffcc;
+    font-size: 40px;
     cursor: pointer;
-    font-size: 1.5rem;
-    transition: all 0.4s ease;
-    box-shadow: 0 0 10px #00eaff;
+    transition: color 0.3s ease;
 }
 
-#toggleMode:hover {
-    background: linear-gradient(45deg, #ff00ff, #00eaff);
-    box-shadow: 0 0 20px #ff00ff;
-    transform: scale(1.1);
+.modal-close:hover {
+    color: #ff00ff;
 }
 
-#toggleMode.dark-mode {
-    background: linear-gradient(45deg, #00ccff, #ff33ff);
-    color: #e0e0e0;
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    color: #00ffcc;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-#toggleMode.dark-mode:hover {
-    background: linear-gradient(45deg, #ff33ff, #00aaff);
-    box-shadow: 0 0 20px #ff33ff;
+.modal-nav:hover {
+    color: #ff00ff;
+    opacity: 0.8;
 }
+
+.modal-prev {
+    left: 20px;
+}
+
+.modal-next {
+    right: 20px;
+}
+
+.modal-title {
+    color: #00ffcc;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    max-width: 90%;
+    text-shadow: 0 0 5px #00ffcc;
+}
+
+body.dark-mode .modal img {
+    border-color: #00ccff;
+}
+
+body.dark-mode .modal-close,
+body.dark-mode .modal-nav,
+body.dark-mode .modal-title {
+    color: #00ffaa;
+}
+
+body.dark-mode .modal-close:hover,
+body.dark-mode .modal-nav:hover {
+    color: #ff33ff;
+}
+
+

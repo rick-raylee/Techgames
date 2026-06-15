@@ -1,0 +1,300 @@
+/* calculadora.css */
+
+/* === CONTÊINER DA CALCULADORA === */
+.calc-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.calc-title-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.calc-title-section h1 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(78, 204, 163, 0.5);
+    margin-bottom: 10px;
+}
+
+.calc-title-section p {
+    color: var(--secondary-text);
+    font-size: 1.1rem;
+}
+
+/* === GRID PRINCIPAL === */
+.calc-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    align-items: start;
+}
+
+@media (max-width: 968px) {
+    .calc-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* === PAINEL DE SELEÇÃO === */
+.selection-panel {
+    background: rgba(26, 26, 46, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.selection-group {
+    margin-bottom: 25px;
+}
+
+.selection-group:last-child {
+    margin-bottom: 0;
+}
+
+.selection-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selection-group label span {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+}
+
+.custom-select {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(15, 52, 96, 0.8);
+    border: 1px solid rgba(78, 204, 163, 0.3);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(78, 204, 163, 0.4);
+}
+
+.custom-select option {
+    background: #16213e;
+    color: #fff;
+}
+
+/* === DASHBOARD DE RESULTADOS === */
+.results-panel {
+    position: sticky;
+    top: 100px;
+    background: linear-gradient(135deg, rgba(22, 33, 62, 0.9), rgba(15, 52, 96, 0.9));
+    border: 2px solid var(--accent-color);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(78, 204, 163, 0.2);
+    transition: all 0.3s ease;
+}
+
+.results-panel:hover {
+    box-shadow: 0 0 30px rgba(78, 204, 163, 0.4);
+}
+
+.result-card {
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.result-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.result-value-large {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ff4444;
+    text-shadow: 0 0 15px rgba(255, 68, 68, 0.6);
+    margin: 10px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.result-value-power {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #00ffcc;
+    text-shadow: 0 0 15px rgba(0, 255, 204, 0.6);
+    margin: 10px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.result-label {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: var(--secondary-text);
+}
+
+.psu-badge-container {
+    display: inline-block;
+    padding: 6px 15px;
+    background: rgba(0, 255, 204, 0.1);
+    border: 1px solid #00ffcc;
+    border-radius: 20px;
+    margin-top: 10px;
+    color: #00ffcc;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* === ALERTA / COMPATIBILIDADE === */
+.compatibility-section {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.compatibility-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.compatibility-list {
+    list-style: none;
+    padding: 0;
+}
+
+.compatibility-item {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--secondary-text);
+}
+
+.compatibility-item:last-child {
+    border-bottom: none;
+}
+
+.compatibility-item.ok {
+    color: #4ecca3;
+}
+
+.compatibility-item.warning {
+    color: #ffb703;
+}
+
+.compatibility-item.danger {
+    color: #ff4444;
+}
+
+.compatibility-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* === AÇÕES === */
+.calc-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-calc {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-calc-primary {
+    background: var(--accent-color);
+    color: #1a1a2e;
+    box-shadow: 0 4px 15px rgba(78, 204, 163, 0.3);
+}
+
+.btn-calc-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(78, 204, 163, 0.5);
+}
+
+.btn-calc-secondary {
+    background: transparent;
+    border: 1px solid var(--secondary-text);
+    color: var(--text-color);
+}
+
+.btn-calc-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+/* === ADAPTAÇÃO PARA MODO CLARO === */
+:root[data-theme="light"] .selection-panel {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme="light"] .custom-select {
+    background: #ffffff;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+:root[data-theme="light"] .custom-select option {
+    background: #ffffff;
+    color: #333;
+}
+
+:root[data-theme="light"] .results-panel {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    border: 2px solid #0f3460;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme="light"] .result-value-power {
+    color: #0f3460;
+    text-shadow: none;
+}
+
+:root[data-theme="light"] .psu-badge-container {
+    background: rgba(15, 52, 96, 0.1);
+    border-color: #0f3460;
+    color: #0f3460;
+}
+
+:root[data-theme="light"] .compatibility-title {
+    color: #1a1a2e;
+}
+
+:root[data-theme="light"] .btn-calc-secondary:hover {
+    background: rgba(0, 0, 0, 0.05);
+}

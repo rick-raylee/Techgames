@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Localização - [SEU NEGÓCIO]</title>
+    <title>Localização - TechGames</title>
 
     <!-- CSS do Projeto -->
     <link rel="stylesheet" href="reset.css">
@@ -13,25 +13,47 @@
 
     <!-- Leaflet CSS - Biblioteca de Mapas -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 
 <body>
+    <!-- Unified Header -->
     <header>
-        <div class="caixa">
-            <h1><img src="imagens/logo.png" alt="Logo [SEU NEGÓCIO]"></h1>
-            <nav>
+        <div class="container">
+            <div class="logo-container">
+                <img src="assets/baixados.png" alt="Tech Game Logo" class="logo-img">
+            </div>
+            <nav class="menu" role="navigation" aria-label="Menu principal">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="galeria.html">Galeria</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="mapa.html">Localização</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                    <li class="header-menu">
+                        <a href="index.html#faq" style="color: #ffffff;">FAQ</a>
+                        <div class="category-menu">
+                            <button class="category-menu-button">Categorias</button>
+                            <div class="category-dropdown">
+                                <a href="index.html#mouses">Mouse</a>
+                                <a href="index.html#teclados">Teclado</a>
+                                <a href="index.html#placas-mae">Placa Mãe</a>
+                                <a href="index.html#jogos-ps5">Jogos PS5</a>
+                                <a href="index.html#estatuas-3d">Estátuas 3D</a>
+                                <a href="index.html#consoles">Consoles</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="galeria.html" style="color: #ffffff;">Estilos de Vida</a></li>
+                    <li><a href="blog.html" style="color: #ffffff;">Blog</a></li>
+                    <li><a href="mapa.html" style="color: #ffffff;">Localização</a></li>
+                    <li><a href="calculadora.html" style="color: #ffffff;">Calculadora</a></li>
+                    <li><a href="agendamento.html" style="color: #ffffff;">Agendar</a></li>
                 </ul>
             </nav>
+            <div class="theme-toggle">
+                <input type="checkbox" id="theme-toggle-checkbox" class="theme-toggle-checkbox">
+                <label for="theme-toggle-checkbox" class="theme-toggle-label"><span class="theme-toggle-icon"></span></label>
+            </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
         <h2 class="titulo-principal-produtos">Como Chegar</h2>
 
@@ -91,15 +113,15 @@
         <section class="localizacoes-disponiveis">
             <h3>Nossas Unidades</h3>
             <div class="localizacoes-grid">
-                <!-- Unidade 1 - PERSONALIZE -->
+                <!-- Unidade 1 -->
                 <div class="local-card" data-lat="-25.4284" data-lng="-49.2733" data-id="unidade1">
                     <div class="local-icon">📍</div>
                     <h4>Unidade Centro</h4>
-                    <p class="local-endereco">Rua Exemplo, 123<br>Centro - Curitiba/PR</p>
+                    <p class="local-endereco">Rua Fictícia do Game, 123<br>Centro - São Paulo/SP</p>
                     <p class="local-horario">Seg-Sex: 8h-18h | Sáb: 8h-14h</p>
                     <div class="local-acoes">
                         <button class="btn-ir-mapa" data-target="unidade1">Ver no Mapa</button>
-                        <a href="tel:+5541999998888" class="btn-ligar">
+                        <a href="tel:+5511987654321" class="btn-ligar">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                             </svg> Ligar
@@ -108,15 +130,15 @@
                     <span class="distancia" data-distancia="unidade1">Calculando...</span>
                 </div>
 
-                <!-- Unidade 2 - PERSONALIZE -->
+                <!-- Unidade 2 -->
                 <div class="local-card" data-lat="-25.4195" data-lng="-49.2646" data-id="unidade2">
                     <div class="local-icon">📍</div>
                     <h4>Unidade Batel</h4>
-                    <p class="local-endereco">Av. do Batel, 456<br>Batel - Curitiba/PR</p>
+                    <p class="local-endereco">Av. Paulista, 456<br>Bela Vista - São Paulo/SP</p>
                     <p class="local-horario">Seg-Sex: 9h-19h | Sáb: 9h-15h</p>
                     <div class="local-acoes">
                         <button class="btn-ir-mapa" data-target="unidade2">Ver no Mapa</button>
-                        <a href="tel:+5541888887777" class="btn-ligar">
+                        <a href="tel:+5511987654321" class="btn-ligar">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                             </svg> Ligar
@@ -124,8 +146,6 @@
                     </div>
                     <span class="distancia" data-distancia="unidade2">Calculando...</span>
                 </div>
-
-                <!-- Adicione mais unidades conforme necessário -->
             </div>
         </section>
 
@@ -136,36 +156,93 @@
                 <div class="instrucao-item">
                     <div class="instrucao-icon">🚗</div>
                     <h4>De Carro</h4>
-                    <p>Estacionamento próprio disponível. Acesso fácil pela [NOME DA VIA PRINCIPAL].</p>
+                    <p>Estacionamento próprio gratuito no local. Acesso direto pelas principais vias da cidade.</p>
                 </div>
                 <div class="instrucao-item">
                     <div class="instrucao-icon">🚌</div>
                     <h4>Transporte Público</h4>
-                    <p>Linhas de ônibus: [NÚMEROS DAS LINHAS]. Ponto em frente ao estabelecimento.</p>
+                    <p>Fácil acesso via metrô e ônibus. Estação de metrô a apenas 200m da loja.</p>
                 </div>
                 <div class="instrucao-item">
                     <div class="instrucao-icon">🚶</div>
                     <h4>Acessibilidade</h4>
-                    <p>Entrada acessível para cadeirantes. Elevador disponível.</p>
+                    <p>Entrada e dependências 100% adaptadas para cadeirantes e pessoas com mobilidade reduzida.</p>
                 </div>
                 <div class="instrucao-item">
                     <div class="instrucao-icon">🅿️</div>
                     <h4>Estacionamento</h4>
-                    <p>Vagas gratuitas para clientes. [XX] vagas disponíveis.</p>
+                    <p>Vagas amplas com vigilância por câmera para garantir total tranquilidade.</p>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Unified Mobile Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Menu TechGames</h3>
+            <button class="close-btn" id="closeSidebar">&times;</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html" class="categoria-btn">Home</a></li>
+            <li>
+                <div class="sidebar-submenu-title">Categorias</div>
+                <ul class="sidebar-submenu">
+                    <li><button class="categoria-btn" data-target="mouses">Mouses</button></li>
+                    <li><button class="categoria-btn" data-target="teclados">Teclados</button></li>
+                    <li><button class="categoria-btn" data-target="placas-mae">Placas Mãe</button></li>
+                    <li><button class="categoria-btn" data-target="jogos-ps5">Jogos PS5</button></li>
+                    <li><button class="categoria-btn" data-target="estatuas-3d">Estátuas 3D</button></li>
+                    <li><button class="categoria-btn" data-target="consoles">Consoles</button></li>
+                </ul>
+            </li>
+            <li><a href="galeria.html" class="categoria-btn">Estilos de Vida</a></li>
+            <li><a href="blog.html" class="categoria-btn">Blog</a></li>
+            <li><a href="mapa.html" class="categoria-btn">Localização</a></li>
+            <li><a href="calculadora.html" class="categoria-btn">Calculadora</a></li>
+            <li><a href="agendamento.html" class="categoria-btn">Agendar</a></li>
+            <li><a href="contato.html" class="categoria-btn">Contato</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+
+    <!-- Unified Footer -->
     <footer>
-        <img src="imagens/logo-branco.png" alt="Logo [SEU NEGÓCIO]">
-        <p class="copyright">&copy; Copyright [SEU NEGÓCIO] - 2024</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section contact">
+                    <h3 style="color: #ffffff;">Contato</h3>
+                    <p style="color: #e2e8f0;"><i class="fas fa-envelope"></i> Email: suporte@techgame.com</p>
+                    <p style="color: #e2e8f0;"><i class="fas fa-phone"></i> Telefone: (11) 98765-4321</p>
+                    <p style="color: #e2e8f0;"><i class="fas fa-map-marker-alt"></i> Endereço: Rua Gamer, 123, São Paulo - SP</p>
+                </div>
+                <div class="footer-section social">
+                    <h3 style="color: #ffffff;">Redes Sociais</h3>
+                    <ul class="social-links">
+                        <li><a href="https://facebook.com/techgame" target="_blank" aria-label="Facebook" style="color: #e2e8f0;"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="https://twitter.com/techgame" target="_blank" aria-label="Twitter" style="color: #e2e8f0;"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="https://instagram.com/techgame" target="_blank" aria-label="Instagram" style="color: #e2e8f0;"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section links">
+                    <h3 style="color: #ffffff;">Links Úteis</h3>
+                    <ul>
+                        <li><a href="index.html#ofertas" style="color: #e2e8f0;">Ofertas</a></li>
+                        <li><a href="index.html#faq" style="color: #e2e8f0;">FAQ</a></li>
+                        <li><a href="contato.html" style="color: #e2e8f0;">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p style="color: #e2e8f0;">&copy; 2023-2025 Tech Game. Todos os direitos reservados.</p></div>
+        </div>
     </footer>
 
     <!-- Leaflet JS - Biblioteca de Mapas -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <!-- Script do Mapa -->
+    <!-- Scripts do Site -->
+    <script src="scripts.js"></script>
     <script src="mapa.js"></script>
 </body>
 

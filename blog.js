@@ -14,52 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 9, title: 'Futuro da Energia Limpa', summary: 'Inovações sustentáveis em destaque.', text: 'A conferência de Energia Limpa, em 27/09/2025 às 14:00, apresentou baterias orgânicas...', image: 'assets/news9.jpg', author: 'Eduardo Ferreira', date: '27/09/2025 14:00' }
     ];
 
-    // Funções de gerenciamento de tema
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        document.cookie = `theme=${theme};path=/;max-age=31536000`;
-        console.log('Tema alterado para:', theme);
-    }
-
-    function getThemeFromCookie() {
-        const cookies = document.cookie.split(';').map(cookie => cookie.trim());
-        const themeCookie = cookies.find(cookie => cookie.startsWith('theme='));
-        return themeCookie ? themeCookie.split('=')[1] : null;
-    }
-
-    function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        setTheme(newTheme);
-    }
-
-    // Inicializar tema
-    const savedTheme = getThemeFromCookie();
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('dark');
-    }
-
-    // Criar botão flutuante de dark mode
-    const toggleButton = document.createElement('button');
-    toggleButton.className = 'dark-mode-toggle';
-    toggleButton.setAttribute('aria-label', 'Toggle dark mode');
-    toggleButton.addEventListener('click', toggleTheme);
-    document.body.appendChild(toggleButton);
-
-    // Atalho de teclado (tecla 'T')
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 't' || e.key === 'T') {
-            toggleTheme();
-            console.log('Tema alternado via atalho de teclado (T)');
-        }
-    });
-
-    // API para controle programático
-    window.toggleDarkMode = toggleTheme;
-    window.setDarkMode = () => setTheme('dark');
-    window.setLightMode = () => setTheme('light');
+    // O tema e a alternância de cores agora são controlados globalmente por scripts.js.
 
     // Gerenciar abas de notícias
     const tabBtns = document.querySelectorAll('.tab-btn');
@@ -373,5 +328,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateVisibleCards();
+    
+    // Abre modal automaticamente de acordo com parâmetros na URL (?modal=login ou ?modal=signup)
+    const urlParams = new URLSearchParams(window.location.search);
+    const modalParam = urlParams.get('modal');
+    if (modalParam === 'login' && loginModal) {
+        closeAllModals();
+        loginModal.classList.add('active');
+        loginModal.setAttribute('aria-hidden', 'false');
+    } else if (modalParam === 'signup' && signupModal) {
+        closeAllModals();
+        signupModal.classList.add('active');
+        signupModal.setAttribute('aria-hidden', 'false');
+    }
+    
     console.log('Script inicializado.');
 });

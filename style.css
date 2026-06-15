@@ -131,9 +131,14 @@ body {
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
 }
 
-.sidebar.hidden,
-.sidebar:not(.mobile-open) {
+.sidebar.hidden {
     transform: translateX(-100%);
+}
+
+@media (max-width: 1024px) {
+    .sidebar:not(.mobile-open) {
+        transform: translateX(-100%);
+    }
 }
 
 .sidebar-header {
@@ -299,7 +304,8 @@ header {
     }
 }
 
-.container {
+header .container,
+footer .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -796,7 +802,8 @@ footer {
 
 /* === RESPONSIVIDADE === */
 @media (max-width: 768px) {
-    .container,
+    header .container,
+    footer .container,
     .footer-content {
         padding: 0 15px;
     }
@@ -906,4 +913,127 @@ footer {
         width: 100%;
         max-width: 200px;
     }
+}
+
+/* === ADICIONADO: SUBMENU DO SIDEBAR E ESTILOS DO MODAL DE PRODUTOS === */
+.sidebar-submenu-title {
+    padding: 10px 20px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--secondary-text);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.sidebar-submenu {
+    list-style: none;
+    padding-left: 15px;
+}
+
+.sidebar-submenu .categoria-btn {
+    padding: 12px 20px;
+    font-size: 0.95em;
+}
+
+/* Product Modal Glassmorphism Styles */
+.product-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 15, 26, 0.85);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.product-modal-content {
+    background-color: var(--product-bg, #16213e);
+    border: 2px solid var(--accent-color, #4ecca3);
+    box-shadow: 0 0 25px rgba(78, 204, 163, 0.4);
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.product-modal-content img {
+    max-width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.product-modal-content p {
+    color: var(--text-color, #fff);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.product-modal-content .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--secondary-text, #aaa);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.product-modal-content .close:hover {
+    color: var(--accent-color, #4ecca3);
+}
+
+/* Header Login/Register buttons */
+.login-nav-btn, .register-nav-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.95em;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.login-nav-btn {
+    color: var(--accent-color, #4ecca3);
+    border: 1px solid var(--accent-color, #4ecca3);
+    background: transparent;
+}
+
+.login-nav-btn:hover {
+    background: rgba(78, 204, 163, 0.1);
+    box-shadow: 0 0 10px rgba(78, 204, 163, 0.3);
+}
+
+.register-nav-btn {
+    color: #fff !important;
+    background: var(--accent-color, #4ecca3);
+    border: 1px solid var(--accent-color, #4ecca3);
+    box-shadow: 0 4px 10px rgba(78, 204, 163, 0.3);
+}
+
+.register-nav-btn:hover {
+    background: #00ffcc;
+    border-color: #00ffcc;
+    color: #0f0f1a !important;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    transform: translateY(-2px);
 }

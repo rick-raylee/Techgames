@@ -1,31 +1,4 @@
-
-/*Expandindo o Projeto - Sistema de Agendamento Online
-LUCAS MATEUS DRESSLER DE BARROS
-•
-Ontem (editado: Ontem)
-100 pontos
-Vamos criar um sistema completo de agendamento com calendário interativo, seleção de horários e confirmação.
-
-Crie os seguintes arquivos:
-agendamento_html (nova página)
-agendamento_css (estilos do sistema)
-agendamento_js (lógica de agendamento)
-/*As demais instruções de implementação seguem no arquivo do guia em pdf.
-
-agendamento.html
-HTML
-
-
-agendamento.css
-
-
-agendamento.js
-JavaScript
-Comentários da turma
-Seus trabalhos
-Atribuído
-Comentários particulares*/
-/* === SISTEMA DE AGENDAMENTO ONLINE - COMPLETO === */
+/* === SISTEMA DE AGENDAMENTO ONLINE - TECHGAMES === */
 
 /**
  * CLASSE PRINCIPAL DO AGENDAMENTO

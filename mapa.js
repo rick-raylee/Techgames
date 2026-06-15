@@ -72,6 +72,12 @@ class MapaInterativo {
      * Configura o mapa e adiciona os marcadores
      */
     init() {
+        // Verificar se o elemento do mapa existe
+        if (!this.mapaElement) {
+            console.warn('Container do mapa (#mapa) não encontrado.');
+            return;
+        }
+
         // Verificar se o Leaflet está carregado
         if (typeof L === 'undefined') {
             console.error('Leaflet não foi carregado. Verifique a conexão com a internet.');
